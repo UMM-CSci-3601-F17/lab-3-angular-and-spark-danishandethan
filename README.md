@@ -1,5 +1,5 @@
 # CSCI 3601 Lab #3 - Angular and Spark Lab
-[![Build Status](https://travis-ci.org/UMM-CSci-3601-F17/lab-3-angular-and-spark-danishandethan.svg?branch=master)
+![Build Status](https://travis-ci.org/UMM-CSci-3601-F17/lab-3-angular-and-spark-danishandethan.svg?branch=master)
 
 During this lab, you will expand on the ToDo API you created in the previous lab
 by building a basic client-side application using Angular 4 which will enable you

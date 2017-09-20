@@ -15,4 +15,6 @@
    - The navbar in this project works specifically through the client side of the project
    - The server is not the only thing doing the routing, if the server is off you can still use the website from the client side but it will not be able to get any data from the server.
    - The client side routing is limited though as it does not receive any data from the database but does have an error message if the server is offline.
-
+4. What does the `user-list.service.ts` do? Why is it not just done in the `user-list.component.ts`?
+   - `user-list.service.ts` sends a request to the server for all the users or a user with a specific id
+   - It is not done in `user-list.component.ts` in the case that we do not want to filter any of the users.

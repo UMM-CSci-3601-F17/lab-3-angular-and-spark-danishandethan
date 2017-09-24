@@ -13,7 +13,7 @@ export class TodoListComponent implements OnInit {
     public todos: Todo[];
     public filteredTodos: Todo[];
 
-    //Inject the UserListService into this component.
+    //Inject the TodoListService into this component.
     //That's what happens in the following constructor.
     //
     //We can call upon the service for interacting
@@ -22,7 +22,7 @@ export class TodoListComponent implements OnInit {
 
     }
 
-    public filterTodos(searchOwner: string, searchStatus: boolean): Todo[] {
+    public filterTodos(searchOwner: string, searchBody: string, searchCategory: string, searchStatus: string): Todo[] {
 
         this.filteredTodos = this.todos;
 
@@ -36,10 +36,29 @@ export class TodoListComponent implements OnInit {
         }
 
         //Filter by status
-        if (searchStatus != null) {
+         if (searchStatus != null) {
+            searchStatus = searchStatus.toLocaleLowerCase();
 
             this.filteredTodos = this.filteredTodos.filter(todo => {
-                return !searchStatus || todo.status == searchStatus;
+            return !searchStatus || todo.status.toString().toLowerCase().indexOf(searchStatus) !== -1;
+        });
+        }
+
+        //Filter by Body
+        if (searchBody != null) {
+            searchBody = searchBody.toLocaleLowerCase();
+
+            this.filteredTodos = this.filteredTodos.filter(todo => {
+                return !searchBody || todo.body.toLowerCase().indexOf(searchBody) !== -1;
+            });
+        }
+
+        //Filter by Category
+        if (searchCategory != null) {
+            searchCategory = searchCategory.toLocaleLowerCase();
+
+            this.filteredTodos = this.filteredTodos.filter(todo => {
+                return !searchCategory || todo.category.toLowerCase().indexOf(searchCategory) !== -1;
             });
         }
 
@@ -47,7 +66,7 @@ export class TodoListComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        //Get Users returns an Observable, basically a "promise" that
+        //Get Todos returns an Observable, basically a "promise" that
         //we will get the data from the server.
         //
         //Subscribe waits until the data is fully downloaded, then

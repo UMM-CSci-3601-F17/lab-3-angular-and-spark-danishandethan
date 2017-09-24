@@ -3,8 +3,8 @@ import {TodoListService} from "./todo-list.service";
 import {Todo} from "./todo";
 
 @Component({
-    selector: 'user-component',
-    templateUrl: 'user.component.html'
+    selector: 'todo-component',
+    templateUrl: 'todo.component.html'
 })
 export class TodoComponent implements OnInit {
     public todo: Todo = null;

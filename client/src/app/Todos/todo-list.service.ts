@@ -14,9 +14,15 @@ export class TodoListService {
     constructor(private http: Http) {
     }
 
-    getTodos(): Observable<Todo[]> {
-        let observable: Observable<any> = this.http.request(this.todoUrl);
-        return observable.map(res => res.json());
+
+    getTodos(status?: string): Observable<Todo[]> {
+        if(status == "" || status == null) {
+            let observable: Observable<any> = this.http.request(this.todoUrl);
+            return observable.map(res => res.json());
+        } else {
+            let observable: Observable<any> = this.http.request(this.todoUrl + "?status=" + status);
+            return observable.map(res => res.json());
+        }
     }
 
     getTodoById(id: string): Observable<Todo> {

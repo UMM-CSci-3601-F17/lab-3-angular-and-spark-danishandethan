@@ -22,6 +22,20 @@ export class TodoListComponent implements OnInit {
 
     }
 
+    //Credit to Paul for the idea behind this function
+    //this sends a string to get todos which filters in the server and returns a list
+    //of todos.
+    public filterStatus(statusFilter: string){
+        this.todoListService.getTodos(statusFilter).subscribe(
+            todos => {
+                this.todos = todos;
+            },
+            err => {
+                console.log(err);
+            }
+        );
+    }
+
     public filterTodos(searchOwner: string, searchBody: string, searchCategory: string, searchStatus: string): Todo[] {
 
         this.filteredTodos = this.todos;

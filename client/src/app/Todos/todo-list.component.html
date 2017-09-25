@@ -1,15 +1,13 @@
 <ul class="list-group">
     <li class="list-group-item list-group-item-info">
 
-        <!-- The names userName and userAge, different from searchName and searchAge, are being
-        used here only to illustrate that these inputs are not necessarily explicitly referencable from within
-        the typescript. Unless made to do so by defining a userName variable within this component's typescript file-->
+        <!-- These act as the inputs for running the filters in the typescript files-->
         <input #input type="text" placeholder="Filter by owner" (input)="todoOwner = $event.target.value">
        <!-- <input #input type="text" placeholder="Filter by status" (input)="todoStatus = $event.target.value"> -->
-        <select #input type="text" placeholder="Filter by status" (input)="todoStatus = $event.target.value">
+        <select #input type="text" placeholder="Filter by status" (input)="filterStatus($event.target.value)">
             <option value=""></option>
-            <option value="false">False</option>
-            <option value="true">True</option>
+            <option value="incomplete">Incomplete</option>
+            <option value="complete">Complete</option>
         </select>
         <input #input type="text" placeholder="Filter by body" (input)="todoBody = $event.target.value">
         <input #input type="text" placeholder="Filter by category" (input)="todoCategory = $event.target.value">
@@ -26,6 +24,7 @@
         <br>Category: {{ todo.category }}<br/>
     </li>
 </ul>
+
 <!-- Maybe this should be a pop-up instead of just a text message? Not sure. -->
 <ng-template #todosError>
     <p>

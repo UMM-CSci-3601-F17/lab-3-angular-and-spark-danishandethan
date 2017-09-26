@@ -1,0 +1,34 @@
+<ul class="list-group">
+    <li class="list-group-item list-group-item-info">
+
+        <!-- These act as the inputs for running the filters in the typescript files-->
+        <input id="ownerfilter" #input type="text" placeholder="Filter by owner" (input)="todoOwner = $event.target.value">
+        <select #input type="text" placeholder="Filter by status" (input)="filterStatus($event.target.value)">
+            <option value="">Status</option>
+            <option value="incomplete">Incomplete</option>
+            <option value="complete">Complete</option>
+        </select>
+        <input id="bodyfilter" #input type="text" placeholder="Filter by body" (input)="todoBody = $event.target.value">
+        <input id="categoryfilter" #input type="text" placeholder="Filter by category" (input)="todoCategory = $event.target.value">
+
+    </li>
+    <li id="title" class="list-group-item list-group-item-info">Todo List</li>
+</ul>
+
+<ul class="list-group" *ngIf="todos; else todosError">
+    <li id="todos" *ngFor="let todo of this.filterTodos(todoOwner, todoBody, todoCategory, todoStatus)" class="list-group-item">
+        <br>The owner is: {{ todo.owner }}<br/>
+        <br>Has it been completed: {{ todo.status }}<br/>
+        <br>The contents: {{ todo.body }}<br/>
+        <br>Category: {{ todo.category }}<br/>
+    </li>
+</ul>
+
+<ng-template #todosError>
+    <p>
+        There was a problem loading the todos. Possibly the server is down or perhaps there are network issues.
+    </p>
+    <p>
+        Please wait a bit and try again.
+    </p>
+</ng-template>

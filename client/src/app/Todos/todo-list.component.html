@@ -3,7 +3,6 @@
 
         <!-- These act as the inputs for running the filters in the typescript files-->
         <input id="ownerfilter" #input type="text" placeholder="Filter by owner" (input)="todoOwner = $event.target.value">
-       <!-- <input #input type="text" placeholder="Filter by status" (input)="todoStatus = $event.target.value"> -->
         <select #input type="text" placeholder="Filter by status" (input)="filterStatus($event.target.value)">
             <option value="">Status</option>
             <option value="incomplete">Incomplete</option>
@@ -25,7 +24,6 @@
     </li>
 </ul>
 
-<!-- Maybe this should be a pop-up instead of just a text message? Not sure. -->
 <ng-template #todosError>
     <p>
         There was a problem loading the todos. Possibly the server is down or perhaps there are network issues.
